@@ -1,0 +1,69 @@
+﻿@model IEnumerable<PRODUCTsession.Models.Item>
+
+@{
+    ViewData["Title"] = "Invoce";
+}
+
+<h1>Invoce</h1>
+
+
+@if(ViewBag.ListCart != null)
+{
+    <p>
+    <a asp-action="Create">Create New</a>
+</p>
+ 
+    <table class="table">
+    <thead>
+        <tr>
+            <th>
+               <p>id</p>
+            </th>
+             <th>
+            <p>name </p>       
+               </th>
+
+             <th>
+            <p>price</p>
+
+             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in  ViewBag.ListCart) {
+        <tr>
+            <td>
+               @item.Product.Id
+            </td>
+            <td>
+               @item.Product.Name
+            </td>
+          
+            <td>
+               @item.Product.Price
+            </td>
+             <td>
+               @item.Quantity
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>   
+}
+else
+{
+    <p>
+    <a>Not things to show it </a>
+</p>
+}
